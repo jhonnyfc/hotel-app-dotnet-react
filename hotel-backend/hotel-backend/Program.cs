@@ -1,4 +1,14 @@
+using hotel_backend.Entities;
+using hotel_backend.services;
+using Newtonsoft.Json;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+string jsonData = File.ReadAllText("hotels.json");
+var hotelData = JsonConvert.DeserializeObject<List<Hotel>>(jsonData);
+builder.Services.AddSingleton(hotelData);
+builder.Services.AddSingleton<IHotelService,MockHotelsService>();
 
 // Add services to the container.
 builder.Services.AddControllers();

@@ -1,4 +1,5 @@
 ﻿using hotel_backend.Entities;
+using hotel_backend.services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hotel_backend.Controllers
@@ -7,23 +8,17 @@ namespace hotel_backend.Controllers
     [ApiController]
     public class HotelsController : ControllerBase
     {
+        private readonly IHotelService _hotelService;
+
+        public HotelsController(IHotelService hotelService)
+        {
+            _hotelService = hotelService;
+        }
+
         [HttpGet()]
         public async Task<ActionResult<List<Hotel>>> GetAllHotels()
         {
-            List<Hotel> Hotels = new List<Hotel> { new Hotel {
-                Id = 1,
-                Name = "Seaside Paradise",
-                Location = "Maldives",
-                Rating = 4.9,
-                ImageUrl = "https://example.com/images/seaside-paradise.jpg",
-                DatesOfTravel = ["2024-01-01", "2024-01-07"],
-                BoardBasis = "All Inclusive",
-                Rooms = new List<Room>
-                {
-                    new Room { RoomType = "Deluxe Suite", Amount = 5 },
-                    new Room { RoomType = "Family Room", Amount = 3 }
-                }
-            } };
+            List<Hotel> Hotels = _hotelService.GetHotelData();
 
             return Ok(Hotels);
 
@@ -32,25 +27,12 @@ namespace hotel_backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<Hotel>>> GetHotelById(int id)
         {
-            List<Hotel> Hotels = new List<Hotel> { new Hotel {
-                Id = 5,
-                Name = "Seaside Paradise",
-                Location = "Maldives",
-                Rating = 4.9,
-                ImageUrl = "https://example.com/images/seaside-paradise.jpg",
-                DatesOfTravel = ["2024-01-01", "2024-01-07"],
-                BoardBasis = "All Inclusive",
-                Rooms = new List<Room>
-                {
-                    new Room { RoomType = "Deluxe Suite", Amount = 5 },
-                    new Room { RoomType = "Family Room", Amount = 3 }
-                }
-            } };
+            List<Hotel> Hotels = _hotelService.GetHotelData();
 
             var hotel = Hotels.Find(x => x.Id == id);
 
             if (hotel == null) {
-                return NotFound($"Sorry the hotle with id: {id} does not exits");
+                return NotFound($"Sorry the hotle with id: {id} does not exists");
             }
 
             return Ok(hotel);

@@ -1,6 +1,12 @@
-@hotel_backend_HostAddress = http://localhost:5131
+@hotel_backend_HostAddress = https://localhost:7251
 
-GET {{hotel_backend_HostAddress}}/weatherforecast/
+GET {{hotel_backend_HostAddress}}/hotels
+Accept: application/json
+
+###
+
+@id=1
+GET {{hotel_backend_HostAddress}}/hotels/{{id}}
 Accept: application/json
 
 ###
