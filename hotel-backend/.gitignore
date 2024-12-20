@@ -1,0 +1,87 @@
+# Ignore Visual Studio files
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]eploy/
+[Dd]ebug-*\
+[Dd]ist-*\
+[Dd]eploy-*\
+bin/
+obj/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific configuration files
+*.sublime-workspace
+*.sublime-project
+.idea/
+
+# JetBrains Rider
+.idea/
+
+# Tye (a tool for microservices development)
+.tye/
+
+# Npm package directories
+node_modules/
+
+# VS for Mac
+.vscode/
+
+# Resharper (if you're using ReSharper)
+_ReSharper.Caches/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET SDK
+.vs2019/
+.vs2017/
+
+# Ignore temporary ASP.NET files
+Temporary ASP.NET Files/
+
+# Ignore Microsoft Azure Web Apps specific files
+.vsapp/
+.vsazure/
+
+# Ignore SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Ignore NuGet package directory
+packages/
+
+# Ignore test output
+TestResults/
+
+# Ignore coverage output
+coverage/
+
+# Ignore local development certificate
+dev-cert.pfx
