@@ -10,10 +10,13 @@ function HotelsPage() {
   const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
 
   useEffect(() => {
-    getHotels().then((hotels) => {
-      setHotels(hotels);
-      setIsLoadingData(false);
-    });
+    getHotels()
+      .then((hotels) => {
+        setHotels(hotels);
+      })
+      .finally(() => {
+        setIsLoadingData(false);
+      });
   }, []);
 
   return (

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getHotelDetail } from "./service";
 import { NavLink, useParams } from "react-router";
 import { Hotel } from "../shared/models/hotel";
+import Spinner from "../shared/componentes/spinner";
 
 function GoBackButton() {
   return (
@@ -17,27 +18,31 @@ function HotelDetailPage() {
   const params = useParams();
 
   const [hotel, setHotel] = useState<Hotel>({} as Hotel);
+  const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
 
   useEffect(() => {
-    getHotelDetail(Number(params.id)).then((hotel) => {
-      if (Object.keys(hotel).length === 0) {
-        return setHotel({} as Hotel);
-      }
-
-      return setHotel(hotel);
-    });
+    getHotelDetail(Number(params.id))
+      .then((hotel) => {
+        if (Object.keys(hotel).length === 0) {
+          return setHotel({} as Hotel);
+        }
+        setHotel(hotel);
+      })
+      .finally(() => {
+        setIsLoadingData(false);
+      });
   }, []);
 
-  if (Object.keys(hotel).length === 0) {
-    return (
-      <div className="text-center text-red-500">
-        Hotel not found
-        <GoBackButton />
-      </div>
-    );
+  if (isLoadingData) {
+    return <Spinner></Spinner>;
   }
 
-  return (
+  return Object.keys(hotel).length === 0 ? (
+    <div className="text-center text-red-500">
+      Hotel not found
+      <GoBackButton />
+    </div>
+  ) : (
     <div className="max-w-4xl mx-auto p-4 text-center">
       <h1 className="text-4xl font-bold mb-4">{hotel.name}</h1>
       <div className="flex justify-center mb-4">
