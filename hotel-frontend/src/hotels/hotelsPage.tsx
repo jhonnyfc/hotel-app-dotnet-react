@@ -24,7 +24,7 @@ function HotelsPage() {
           >
             <img
               src={hotel.imageUrl}
-              alt={hotel.name}
+              alt={`${hotel.name} img not found`}
               className="w-full h-48 object-cover rounded-md mb-4"
             />
             <h2 className="text-xl font-semibold">{hotel.name}</h2>
