@@ -28,7 +28,7 @@
 
 3. **Access the Application**
 
-   Frontend: Open your browser and go to http://localhost:5173/ to see the Vite app.
+   Frontend: Open your browser and go to http://localhost:4173/ to see the Vite app.
    Backend: Your backend API will be available at http://localhost:5131/.
 
 4. **Stop the Services**
