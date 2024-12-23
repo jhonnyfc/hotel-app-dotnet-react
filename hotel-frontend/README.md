@@ -9,13 +9,22 @@ Currently, two official plugins are available:
 
 ## Server Commands
 
-Run Develop
+**Install**
+node 22 LTS required
+
+```
+npm i
+```
+
+**Run Develop**
+Access on http://localhost:5173
 
 ```
 npm run dev
 ```
 
-Run build and preview
+**Run build and preview**
+Access on http://localhost:4173
 
 ```
 npm run build
