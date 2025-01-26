@@ -1,10 +1,15 @@
-import { NavLink } from "react-router";
 import { Room } from "../../shared/models/room";
 import { Hotel } from "../../shared/models/hotel";
+import { useNavigate } from "react-router";
 
 function HotelCard({ hotel }: { hotel: Hotel }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 w-[350px]">
+    <div
+      className="bg-white shadow-md rounded-lg p-4 w-[350px] hover:bg-gray-100 cursor-pointer"
+      onClick={() => navigate(`/hotels/${hotel.id}`)}
+    >
       <img
         src={hotel.imageUrl}
         alt={`${hotel.name} img not found`}
@@ -24,12 +29,6 @@ function HotelCard({ hotel }: { hotel: Hotel }) {
           ))}
         </ul>
       </div>
-      <NavLink
-        to={`/hotels/${hotel.id}`}
-        className="text-blue-500 hover:underline mt-4 block"
-      >
-        View Details
-      </NavLink>
     </div>
   );
 }

@@ -38,7 +38,7 @@ function HotelDetailPage() {
   }
 
   return Object.keys(hotel).length === 0 ? (
-    <div className="text-center text-red-500">
+    <div className="text-center text-red-500 p-4">
       Hotel not found
       <GoBackButton />
     </div>

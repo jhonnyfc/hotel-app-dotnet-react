@@ -28,11 +28,17 @@ function HotelsPage() {
         <Spinner></Spinner>
       ) : (
         <div className="flex flex-wrap justify-center gap-4">
-          {hotels.map((hotel) => (
-            <React.Fragment key={hotel.id}>
-              <HotelCard hotel={hotel} />
-            </React.Fragment>
-          ))}
+          {hotels.length ? (
+            hotels.map((hotel) => (
+              <React.Fragment key={hotel.id}>
+                <HotelCard hotel={hotel} />
+              </React.Fragment>
+            ))
+          ) : (
+            <div className="text-center text-xl font-semibold text-red-500">
+              No hotels found!!
+            </div>
+          )}
         </div>
       )}
     </div>
